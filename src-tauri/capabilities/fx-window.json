@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "fx-window",
+  "description": "The cursor-effects overlay: it may read settings and ask for the cursor position. Nothing else.",
+  "windows": ["fx"],
+  "permissions": ["core:default", "allow-settings-get", "allow-fx-cursor", "allow-fx-cursor-batch"]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "datetime",
+  "name": "Date, time & weather",
+  "version": "1.0.0",
+  "sdk": 1,
+  "description": "Time, date and weather. Show any combination. Weather uses open-meteo.com for the place you choose.",
+  "entry": "index.html",
+  "permissions": ["theme.read", "storage", "weather.read"],
+  "layout": { "cols": 2, "height": 170 }
+}

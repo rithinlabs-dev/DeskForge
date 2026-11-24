@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Date, time &amp; weather</title>
+  <link rel="stylesheet" href="../../sdk/deskforge-widget.css">
+  <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+  <button id="gear" class="gear" aria-label="Widget settings" title="Settings">&#9881;</button>
+
+  <main id="dt" class="dt layout-stack style-clean">
+    <p id="time" class="time" data-df-layout="time" data-df-layout-label="Time" data-df-layout-kind="text"></p>
+    <p id="date" class="date" data-df-layout="date" data-df-layout-label="Date" data-df-layout-kind="text"></p>
+    <p id="wx" class="wx" data-df-layout="weather" data-df-layout-label="Weather" data-df-layout-kind="text"></p>
+    <p id="hint" class="muted" hidden data-df-layout="hint" data-df-layout-label="Hint" data-df-layout-kind="text">Everything is hidden. Open settings with the gear.</p>
+  </main>
+  <p id="msg" class="msg muted" role="status" data-df-layout="status" data-df-layout-label="Status" data-df-layout-kind="text"></p>
+
+  <section id="cfg" class="cfg" hidden aria-label="Settings">
+    <div class="grid">
+      <label><input type="checkbox" id="s-time"> time</label>
+      <label><input type="checkbox" id="s-date"> date</label>
+      <label><input type="checkbox" id="s-weather"> weather</label>
+      <label>clock <select id="s-hour"><option value="24">24-hour</option><option value="12">12-hour</option></select></label>
+      <label><input type="checkbox" id="s-seconds"> seconds</label>
+      <label>layout <select id="s-layout"><option value="stack">stacked</option><option value="row">in a row</option></select></label>
+      <label>style <select id="s-style"><option value="clean">clean</option><option value="bold">bold</option><option value="digital">digital</option></select></label>
+      <label>font <select id="s-font"><option value="theme">theme font</option><option value="mono">monospace</option><option value="serif">serif</option><option value="sans">sans-serif</option></select></label>
+      <label><input type="checkbox" id="s-usecolor"> own colour <input type="color" id="s-color" value="#7dffa8"></label>
+      <label>units <select id="s-units"><option value="c">&deg;C</option><option value="f">&deg;F</option></select></label>
+    </div>
+    <div class="place">
+      <input type="text" id="s-place" placeholder="Search for a city" maxlength="60" aria-label="City">
+      <button id="s-search" type="button">search</button>
+    </div>
+    <ul id="s-results" class="results"></ul>
+    <p class="muted small">Weather: only the city you search for and its coordinates (rounded to about 1 km) go to open-meteo.com.</p>
+    <button id="s-done" type="button">done</button>
+  </section>
+
+  <script src="../../sdk/deskforge-sdk.js"></script>
+  <script src="widget.js"></script>
+</body>
+</html>

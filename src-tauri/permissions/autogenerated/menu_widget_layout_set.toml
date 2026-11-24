@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-menu-widget-layout-set"
+description = "Enables the menu_widget_layout_set command without any pre-configured scope."
+commands.allow = ["menu_widget_layout_set"]
+
+[[permission]]
+identifier = "deny-menu-widget-layout-set"
+description = "Denies the menu_widget_layout_set command without any pre-configured scope."
+commands.deny = ["menu_widget_layout_set"]

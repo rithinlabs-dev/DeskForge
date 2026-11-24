@@ -1,0 +1,31 @@
+[hidden] { display: none !important; }
+.dt { display: flex; flex-direction: column; justify-content: center; height: 100%; gap: 2px; }
+.dt.layout-row { flex-direction: row; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 18px; }
+.time { font-size: 2.8em; line-height: 1; font-weight: 300; letter-spacing: -0.03em; text-shadow: var(--glow); }
+.date, .wx { opacity: 0.85; }
+.style-bold .time { font-weight: 800; }
+.style-digital .time { font-family: "Cascadia Mono", Consolas, monospace; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; text-shadow: 0 0 14px currentColor; }
+.msg { position: fixed; left: 10px; right: 40px; bottom: 6px; font-size: 0.8em; min-height: 1.2em; }
+
+.gear {
+  position: fixed; left: 6px; top: 6px; z-index: 6; width: 26px; height: 26px; padding: 0; line-height: 1;
+  color: var(--text); background: color-mix(in srgb, var(--surface) 80%, transparent);
+  border: 1px solid var(--line); border-radius: 50%; cursor: pointer; opacity: 0; transition: opacity 0.12s;
+}
+body:hover .gear, .gear:focus-visible { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .gear { transition: none; } }
+
+.cfg { position: fixed; inset: 0; z-index: 5; overflow: auto; padding: 10px 12px; background: color-mix(in srgb, var(--surface) 97%, transparent); font-size: 0.9em; }
+.cfg .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px 14px; }
+.cfg label { display: flex; align-items: center; gap: 6px; }
+.cfg select, .cfg input[type="text"], .cfg button {
+  font: inherit; color: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: calc(var(--radius) * 0.6); padding: 0.15em 0.5em;
+}
+.cfg input[type="color"] { width: 30px; height: 22px; padding: 0; border: 1px solid var(--line); background: none; }
+.cfg input[type="checkbox"] { accent-color: var(--accent); }
+.cfg button { cursor: pointer; }
+.place { display: flex; gap: 6px; margin: 8px 0 4px; }
+.place input { flex: 1; min-width: 0; }
+.results { list-style: none; margin: 4px 0; padding: 0; display: grid; gap: 4px; }
+.results button { width: 100%; text-align: left; }
+.small { font-size: 0.85em; }

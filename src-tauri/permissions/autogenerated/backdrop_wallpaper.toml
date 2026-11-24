@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-backdrop-wallpaper"
+description = "Enables the backdrop_wallpaper command without any pre-configured scope."
+commands.allow = ["backdrop_wallpaper"]
+
+[[permission]]
+identifier = "deny-backdrop-wallpaper"
+description = "Denies the backdrop_wallpaper command without any pre-configured scope."
+commands.deny = ["backdrop_wallpaper"]

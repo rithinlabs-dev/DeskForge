@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-image-save-png"
+description = "Enables the image_save_png command without any pre-configured scope."
+commands.allow = ["image_save_png"]
+
+[[permission]]
+identifier = "deny-image-save-png"
+description = "Denies the image_save_png command without any pre-configured scope."
+commands.deny = ["image_save_png"]

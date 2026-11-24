@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-desktop-layout-editor-stop"
+description = "Enables the desktop_layout_editor_stop command without any pre-configured scope."
+commands.allow = ["desktop_layout_editor_stop"]
+
+[[permission]]
+identifier = "deny-desktop-layout-editor-stop"
+description = "Denies the desktop_layout_editor_stop command without any pre-configured scope."
+commands.deny = ["desktop_layout_editor_stop"]

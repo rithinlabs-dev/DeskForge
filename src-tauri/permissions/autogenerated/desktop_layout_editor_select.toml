@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-desktop-layout-editor-select"
+description = "Enables the desktop_layout_editor_select command without any pre-configured scope."
+commands.allow = ["desktop_layout_editor_select"]
+
+[[permission]]
+identifier = "deny-desktop-layout-editor-select"
+description = "Denies the desktop_layout_editor_select command without any pre-configured scope."
+commands.deny = ["desktop_layout_editor_select"]

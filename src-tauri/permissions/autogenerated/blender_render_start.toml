@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-blender-render-start"
+description = "Enables the blender_render_start command without any pre-configured scope."
+commands.allow = ["blender_render_start"]
+
+[[permission]]
+identifier = "deny-blender-render-start"
+description = "Denies the blender_render_start command without any pre-configured scope."
+commands.deny = ["blender_render_start"]

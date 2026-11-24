@@ -1,0 +1,15 @@
+DeskForge - start here (clean machine)
+
+ONE-TIME INSTALLS (PowerShell as Administrator, then restart Windows if asked):
+  winget install Git.Git
+  winget install OpenJS.NodeJS.LTS
+  winget install Rustlang.Rustup
+  winget install Microsoft.VisualStudio.2022.BuildTools --override "--wait --passive --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"
+
+THEN (normal PowerShell, in the folder that contains package.json):
+  powershell -ExecutionPolicy Bypass -File .\setup.ps1      checks files, installs packages, makes icons, runs tests
+  npm run tauri dev                                          run the app
+  powershell -ExecutionPolicy Bypass -File .\build-exe.ps1  build the installer (.exe)
+
+Always run "npm install" (setup.ps1 does) BEFORE any "npm run tauri ..." command.
+Use a short path without spaces, e.g. C:\dev\deskforge, and not inside OneDrive.

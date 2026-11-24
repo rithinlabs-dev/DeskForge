@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-widget-store-load"
+description = "Enables the widget_store_load command without any pre-configured scope."
+commands.allow = ["widget_store_load"]
+
+[[permission]]
+identifier = "deny-widget-store-load"
+description = "Denies the widget_store_load command without any pre-configured scope."
+commands.deny = ["widget_store_load"]

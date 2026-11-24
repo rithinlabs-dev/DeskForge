@@ -1,0 +1,10 @@
+{
+  "id": "system-monitor",
+  "name": "System monitor",
+  "version": "1.0.0",
+  "sdk": 1,
+  "description": "Live processor and memory use.",
+  "entry": "index.html",
+  "permissions": ["theme.read", "system.read"],
+  "layout": { "cols": 1, "height": 150 }
+}

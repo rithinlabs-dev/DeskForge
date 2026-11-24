@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "DeskForge",
+  "version": "1.0.0",
+  "identifier": "dev.deskforge.app",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      { "label": "main", "title": "DeskForge", "width": 1100, "height": 720, "minWidth": 800, "minHeight": 520, "dragDropEnabled": false }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' asset: http://asset.localhost data:; media-src 'self' asset: http://asset.localhost; style-src 'self' 'unsafe-inline'; style-src-attr 'unsafe-inline'; frame-src 'self'; connect-src 'self' ipc: http://ipc.localhost https://api.open-meteo.com https://geocoding-api.open-meteo.com; object-src 'none'; base-uri 'none'; form-action 'none'",
+      "assetProtocol": { "enable": true, "scope": ["$APPDATA/media/**"] }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+    "publisher": "DeskForge",
+    "category": "Utility",
+    "shortDescription": "Windows desktop customization platform",
+    "longDescription": "DeskForge lets you customize your Windows desktop with themes, HUDs, widgets and animated wallpapers.",
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper", "silent": true },
+      "nsis": { "installMode": "currentUser", "displayLanguageSelector": false, "startMenuFolder": "DeskForge", "installerHooks": "./installer-hooks.nsh" }
+    }
+  }
+}

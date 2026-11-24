@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-menu-show-app"
+description = "Enables the menu_show_app command without any pre-configured scope."
+commands.allow = ["menu_show_app"]
+
+[[permission]]
+identifier = "deny-menu-show-app"
+description = "Denies the menu_show_app command without any pre-configured scope."
+commands.deny = ["menu_show_app"]

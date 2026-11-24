@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-widget-layout-set"
+description = "Enables the widget_layout_set command without any pre-configured scope."
+commands.allow = ["widget_layout_set"]
+
+[[permission]]
+identifier = "deny-widget-layout-set"
+description = "Denies the widget_layout_set command without any pre-configured scope."
+commands.deny = ["widget_layout_set"]

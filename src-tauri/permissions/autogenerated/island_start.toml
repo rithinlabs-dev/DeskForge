@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-island-start"
+description = "Enables the island_start command without any pre-configured scope."
+commands.allow = ["island_start"]
+
+[[permission]]
+identifier = "deny-island-start"
+description = "Denies the island_start command without any pre-configured scope."
+commands.deny = ["island_start"]

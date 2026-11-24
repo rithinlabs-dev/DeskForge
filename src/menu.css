@@ -1,0 +1,39 @@
+html, body, #root { height: 100%; }
+body { overflow: hidden; }
+.menu { display: flex; flex-direction: column; gap: 14px; height: 100%; padding: 12px; overflow-y: auto; border: 1px solid var(--edge); scrollbar-width: thin; }
+.menu-head { display: flex; align-items: center; gap: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--edge); cursor: move; user-select: none; touch-action: none; }
+.menu-head h1 { flex: 1; margin: 0; font-size: 1em; }
+.menu-clock { font-size: 2.6em; line-height: 1; font-weight: 300; font-variant-numeric: tabular-nums; text-shadow: var(--glow); }
+.menu-date { margin-top: 2px; }
+.meter { display: grid; grid-template-columns: 3.2em 1fr 3em; align-items: center; gap: 8px; }
+.meter .bar { height: 6px; overflow: hidden; background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.meter .bar i { display: block; height: 100%; background: var(--accent); box-shadow: var(--glow); }
+.meter code { text-align: right; }
+.menu h2 { margin: 0 0 8px; font-size: 0.95em; }
+.menu-step { display: grid; grid-template-columns: auto 1fr auto; gap: 6px; }
+.menu-step select { min-width: 0; }
+.menu-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.menu-list li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.menu-foot { margin-top: auto; display: grid; gap: 8px; }
+.menu .field { padding: 4px 0; }
+.menu-layout-editor { display: grid; gap: 8px; padding-top: 10px; border-top: 1px solid var(--edge); }
+.menu-layout-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.menu-layout-head h2 { margin: 0 0 3px; font-size: 0.95em; }
+.menu-layout-head p { font-size: 0.82em; }
+.menu-layout-editor h3 { margin: 2px 0 4px; font-size: 0.9em; }
+.menu-layout-editor h3 small { font-size: 0.78em; font-weight: normal; opacity: 0.75; }
+.menu-layout-layer-list { display: grid; gap: 3px; max-height: 120px; overflow-y: auto; margin: 0; padding: 0; list-style: none; }
+.menu-layout-layer-list li { display: flex; align-items: center; gap: 4px; padding: 2px; border: 1px solid transparent; }
+.menu-layout-layer-list li.selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.menu-layout-layer-select { display: flex; flex: 1; min-width: 0; justify-content: space-between; gap: 6px; padding: 3px; overflow: hidden; color: inherit; background: transparent; border: 0; font: inherit; text-align: left; cursor: pointer; }
+.menu-layout-layer-select span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.menu-layout-layer-select small { color: var(--muted); }
+.menu-layout-layer-actions { display: flex; gap: 3px; }
+.menu-layout-layer-actions .btn { padding: 0 6px; }
+.menu-layout-control { display: grid; gap: 2px; padding: 2px 0; }
+.menu-layout-control > span { display: flex; justify-content: space-between; gap: 8px; }
+.menu-layout-control input[type="range"] { width: 100%; margin: 2px 0; }
+.menu-layout-control input[type="color"] { justify-self: start; }
+.menu-layout-control select { justify-self: start; min-width: 100px; }
+.menu-layout-properties { padding-top: 7px; border-top: 1px solid var(--edge); }
+.menu-layout-actions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }

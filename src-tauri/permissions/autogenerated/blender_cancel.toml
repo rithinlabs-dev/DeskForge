@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-blender-cancel"
+description = "Enables the blender_cancel command without any pre-configured scope."
+commands.allow = ["blender_cancel"]
+
+[[permission]]
+identifier = "deny-blender-cancel"
+description = "Denies the blender_cancel command without any pre-configured scope."
+commands.deny = ["blender_cancel"]

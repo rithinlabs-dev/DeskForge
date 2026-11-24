@@ -1,0 +1,44 @@
+/* Base styles for widgets. The host's theme arrives through the SDK as CSS variables. */
+:root {
+  --bg: #050a07;
+  --surface: #0a120d;
+  --text: #7dffa8;
+  --accent: #22f57a;
+  --on-accent: #10161d;
+  --radius: 2px;
+  --space: 14px;
+  --font-size: 14px;
+  --font: "Cascadia Mono", Consolas, monospace;
+  --muted: color-mix(in srgb, var(--text) 62%, var(--surface));
+  --line: color-mix(in srgb, var(--text) 16%, transparent);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background-color: color-mix(in srgb, var(--glass-surface, var(--surface)) var(--bg-opacity, 100%), transparent);
+  background-image: var(--glass-reflection, none);
+  color: var(--glass-text, var(--text));
+  font: var(--font-size) / 1.5 var(--font);
+  position: relative;
+  border: 1px solid var(--glass-border, var(--edge));
+  border-radius: var(--glass-radius, var(--radius));
+  box-shadow: var(--body-shadow, none), var(--glass-shadow, none);
+  padding: var(--space);
+  overflow: hidden;
+  transition: background-color 180ms ease, border-color 180ms ease, border-radius 180ms ease, box-shadow 180ms ease, color 180ms ease;
+}
+p { margin: 0; }
+.muted { color: var(--muted); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* HUD frame. --bg-alpha (0-100) comes from the host's "widget background" slider. */
+:root {
+  --edge: color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, var(--accent) 32%, transparent) var(--bg-opacity, 100%), transparent) var(--frame-opacity, 100%), transparent);
+  --glow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+body::before, body::after { content: ""; position: fixed; width: 10px; height: 10px; border: 2px solid color-mix(in srgb, color-mix(in srgb, var(--accent) 1%, transparent) var(--bg-opacity, 100%), transparent); opacity: var(--frame, 1); pointer-events: none; }
+body::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+body::after { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
+}

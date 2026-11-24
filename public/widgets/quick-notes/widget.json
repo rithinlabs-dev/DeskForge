@@ -1,0 +1,10 @@
+{
+  "id": "quick-notes",
+  "name": "Quick notes",
+  "version": "1.0.0",
+  "sdk": 1,
+  "description": "A scratchpad that saves as you type.",
+  "entry": "index.html",
+  "permissions": ["theme.read", "storage"],
+  "layout": { "cols": 2, "height": 190 }
+}

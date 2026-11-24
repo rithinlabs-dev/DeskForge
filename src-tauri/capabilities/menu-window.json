@@ -1,0 +1,27 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "menu-window",
+  "description": "The docked desktop menu: a trusted first-party window with only what the menu needs.",
+  "windows": ["menu"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-outer-position",
+    "core:window:allow-set-position",
+    "core:window:allow-set-always-on-top",
+    "allow-get-snapshot",
+    "allow-set-polling-visible",
+    "allow-settings-get",
+    "allow-settings-set",
+    "allow-desktop-list",
+    "allow-desktop-pin",
+    "allow-desktop-unpin",
+    "allow-menu-widget-layout-set",
+    "allow-desktop-layout-editor-state",
+    "allow-desktop-layout-editor-select",
+    "allow-desktop-layout-editor-stop",
+    "allow-menu-show-app",
+    "allow-fx-start",
+    "allow-fx-stop",
+    "allow-fx-status"
+  ]
+}

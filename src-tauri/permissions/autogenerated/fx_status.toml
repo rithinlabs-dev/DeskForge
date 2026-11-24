@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-fx-status"
+description = "Enables the fx_status command without any pre-configured scope."
+commands.allow = ["fx_status"]
+
+[[permission]]
+identifier = "deny-fx-status"
+description = "Denies the fx_status command without any pre-configured scope."
+commands.deny = ["fx_status"]

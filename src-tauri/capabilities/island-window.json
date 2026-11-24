@@ -1,0 +1,20 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "island-window",
+  "description": "The floating island: a trusted first-party window. It may resize itself, press media and volume keys, read system stats and the launcher list, and keep its own settings.",
+  "windows": ["island"],
+  "permissions": [
+    "core:default",
+    "allow-get-snapshot",
+    "allow-set-polling-visible",
+    "allow-settings-get",
+    "allow-settings-set",
+    "allow-launcher-list",
+    "allow-launcher-launch",
+    "allow-island-resize",
+    "allow-island-tick",
+    "allow-island-volume",
+    "allow-nowplaying-state",
+    "allow-nowplaying-control"
+  ]
+}

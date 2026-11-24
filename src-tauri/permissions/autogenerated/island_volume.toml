@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-island-volume"
+description = "Enables the island_volume command without any pre-configured scope."
+commands.allow = ["island_volume"]
+
+[[permission]]
+identifier = "deny-island-volume"
+description = "Denies the island_volume command without any pre-configured scope."
+commands.deny = ["island_volume"]

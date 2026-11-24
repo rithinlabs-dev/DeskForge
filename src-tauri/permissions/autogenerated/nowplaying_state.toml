@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-nowplaying-state"
+description = "Enables the nowplaying_state command without any pre-configured scope."
+commands.allow = ["nowplaying_state"]
+
+[[permission]]
+identifier = "deny-nowplaying-state"
+description = "Denies the nowplaying_state command without any pre-configured scope."
+commands.deny = ["nowplaying_state"]

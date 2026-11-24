@@ -1,0 +1,8 @@
+{
+  "widgets": [
+    "clock",
+    "system-monitor",
+    "quick-notes",
+    "datetime"
+  ]
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-media-import-video"
+description = "Enables the media_import_video command without any pre-configured scope."
+commands.allow = ["media_import_video"]
+
+[[permission]]
+identifier = "deny-media-import-video"
+description = "Denies the media_import_video command without any pre-configured scope."
+commands.deny = ["media_import_video"]

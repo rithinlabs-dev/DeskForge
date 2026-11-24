@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-desktop-glass-status"
+description = "Enables the desktop_glass_status command without any pre-configured scope."
+commands.allow = ["desktop_glass_status"]
+
+[[permission]]
+identifier = "deny-desktop-glass-status"
+description = "Denies the desktop_glass_status command without any pre-configured scope."
+commands.deny = ["desktop_glass_status"]

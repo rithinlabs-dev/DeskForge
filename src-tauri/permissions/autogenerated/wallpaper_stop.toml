@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-wallpaper-stop"
+description = "Enables the wallpaper_stop command without any pre-configured scope."
+commands.allow = ["wallpaper_stop"]
+
+[[permission]]
+identifier = "deny-wallpaper-stop"
+description = "Denies the wallpaper_stop command without any pre-configured scope."
+commands.deny = ["wallpaper_stop"]

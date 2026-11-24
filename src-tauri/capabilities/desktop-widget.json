@@ -1,0 +1,30 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "desktop-widget",
+  "description": "Desktop widget host windows (dw-*). Read-only settings, scoped widget data, and limited in-place layout editing for itself.",
+  "windows": ["dw-*"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-outer-position",
+    "core:window:allow-set-position",
+    "core:window:allow-inner-size",
+    "core:window:allow-set-size",
+    "allow-get-snapshot",
+    "allow-set-polling-visible",
+    "allow-settings-get",
+    "allow-widget-store-load",
+    "allow-widget-store-save",
+    "allow-widget-layout-set",
+    "allow-widget-layout-editor-start",
+    "allow-widget-layout-editor-update",
+    "allow-desktop-layout-editor-select",
+    "allow-desktop-layout-editor-stop",
+    "allow-launcher-list",
+    "allow-launcher-launch",
+    "allow-desktop-commit-bounds",
+    "allow-desktop-set-glass",
+    "allow-desktop-glass-status",
+    "allow-backdrop-wallpaper",
+    "allow-backdrop-geometry"
+  ]
+}

@@ -1,0 +1,12 @@
+body { display: flex; flex-direction: column; gap: 4px; }
+textarea {
+  flex: 1;
+  resize: none;
+  font: inherit;
+  color: inherit;
+  background: color-mix(in srgb, var(--glass-surface, var(--bg)) var(--bg-opacity, 100%), transparent);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * 0.6);
+  padding: 0.5em 0.7em;
+}
+#status { min-height: 1.5em; font-size: 0.85em; }

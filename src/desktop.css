@@ -1,0 +1,150 @@
+html, body, #root { height: 100%; margin: 0; background: transparent; overflow: hidden; }
+body { font-family: var(--font, "Segoe UI", sans-serif); font-size: var(--font-size, 15px); color: var(--text, #16202a); }
+
+.dw-root { position: relative; height: 100%; }
+.dw-root[data-glass="true"][data-glass-native="false"] {
+  border-radius: 14px;
+  background-color: color-mix(in srgb, var(--glass-tint, #25282d) var(--glass-tint-opacity, 35%), transparent);
+}
+/* Frosted wallpaper glass: the blurred slice of the wallpaper is drawn by DeskForge behind the widget. */
+.dw-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  pointer-events: none;
+}
+.dw-backdrop-img {
+  position: absolute;
+  background-repeat: no-repeat;
+  filter: blur(28px) saturate(1.35);
+}
+.dw-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--glass-tint, #25282d) var(--glass-tint-opacity, 35%), transparent);
+}
+.dw-root[data-glass="true"][data-glass-native="false"][data-backdrop="true"] { background-color: transparent; }
+.dw-root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, box-shadow 180ms ease;
+}
+.dw-root[data-glass="true"]::before {
+  opacity: var(--glass-level, 0.55);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.025) 48%, transparent 76%);
+  border: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+.dw-root[data-glass="true"][data-system-theme="light"]::before {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.14) 48%, transparent 76%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+.dw-root[data-glass="true"][data-border="true"]::before { border: 1px solid rgba(255, 255, 255, 0.2); }
+.dw-root[data-glass="true"][data-system-theme="light"][data-border="true"]::before { border-color: rgba(255, 255, 255, 0.68); }
+.dw-root[data-glass="true"][data-shadow="true"]::before { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 12px 30px rgba(0, 0, 0, 0.22); }
+.dw-root[data-glass="true"][data-system-theme="light"][data-shadow="true"]::before { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 10px 26px rgba(30, 42, 56, 0.14); }
+.dw-root[data-glass="true"] iframe { position: relative; z-index: 0; border-radius: 14px; }
+.dw-root[data-glass="true"] .dw-btn,
+.dw-root[data-glass="true"] .dw-error { z-index: 2; }
+@media (prefers-reduced-motion: reduce) {
+  .dw-root::before { transition: none; }
+}
+.dw-note {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: var(--space, 16px);
+  background: var(--surface, #f6f8fa);
+  border-radius: var(--radius, 10px);
+}
+
+/* Widget controls appear on hover; layout handles are shown only while editing. */
+.dw-btn {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--accent, #22f57a);
+  background: color-mix(in srgb, var(--surface, #0a120d) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, #22f57a) 55%, transparent);
+  opacity: 0;
+  pointer-events: none; /* hidden controls never intercept clicks meant for the widget */
+  transition: opacity 0.12s;
+  touch-action: none;
+  user-select: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.dw-btn.show { opacity: 1; pointer-events: auto; }
+.dw-btn:hover { color: var(--on-accent, #10161d); background: var(--accent, #22f57a); }
+.dw-btn.active { color: var(--on-accent, #10161d); background: var(--accent, #22f57a); opacity: 1; pointer-events: auto; }
+.dw-edit { top: 6px; left: 6px; }
+.dw-move { top: 6px; right: 6px; cursor: move; }
+.dw-size { bottom: 6px; right: 6px; cursor: nwse-resize; }
+@media (prefers-reduced-motion: reduce) { .dw-btn { transition: none; } }
+
+.dw-layout-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.dw-layout-target {
+  position: absolute;
+  z-index: 1;
+  min-width: 8px;
+  min-height: 8px;
+  padding: 0;
+  border: 1px dashed color-mix(in srgb, var(--accent, #22f57a) 86%, white);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--accent, #22f57a) 12%, transparent);
+  opacity: 0.72;
+  cursor: move;
+  touch-action: none;
+  pointer-events: auto;
+}
+.dw-layout-target.selected {
+  border-style: solid;
+  background: color-mix(in srgb, var(--accent, #22f57a) 22%, transparent);
+  opacity: 1;
+}
+.dw-layout-target::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: -1px;
+  top: -1.65em;
+  max-width: 200px;
+  overflow: hidden;
+  padding: 0 5px;
+  color: var(--on-accent, #10161d);
+  background: var(--accent, #22f57a);
+  border-radius: 3px;
+  font: 11px/1.5 "Segoe UI", sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.dw-error {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  max-width: calc(100% - 52px);
+  padding: 2px 8px;
+  color: var(--text, #000);
+  background: var(--surface, #fff);
+  border-radius: 4px;
+}
+
+/* Belt and braces: no browser-default iframe chrome inside a desktop widget window. */
+.dw-root iframe { display: block; width: 100%; height: 100%; border: 0; outline: 0; background: transparent; }

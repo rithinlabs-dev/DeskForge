@@ -1,0 +1,211 @@
+/* The floating island. The window is transparent; only the pill/panel is drawn. Every look setting arrives as a
+   --isl-* custom property set on .island-wrap by the page (see src/island/style.ts), so nothing here is hard-coded to
+   one colour scheme. Surfaces and muted text are mixed from the text colour, so light and dark looks both work. */
+html, body {
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+body {
+  font-size: 13px;
+}
+
+.island-wrap {
+  /* fallbacks, in case a variable is ever missing */
+  --isl-scale: 1; --isl-pill-w: 300px; --isl-panel-w: 420px; --isl-bg: #0a0c0f; --isl-fg: #f2f5f7;
+  --isl-accent: #4aa3ff; --isl-on-accent: #fff; --isl-radius: 22px; --isl-border-w: 1px;
+  --isl-border-c: rgba(255, 255, 255, 0.1); --isl-shadow: none; --isl-anim: 240ms; --isl-idle: 1;
+  --isl-font: "Segoe UI", system-ui, sans-serif;
+
+  --surface: color-mix(in srgb, var(--isl-fg) 12%, transparent);
+  --surface-hover: color-mix(in srgb, var(--isl-fg) 20%, transparent);
+  --track: color-mix(in srgb, var(--isl-fg) 16%, transparent);
+  --muted: color-mix(in srgb, var(--isl-fg) 62%, transparent);
+  --dim: color-mix(in srgb, var(--isl-fg) 45%, transparent);
+
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  padding: calc(6px * var(--isl-scale)) calc(10px * var(--isl-scale));
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: var(--isl-font);
+  color: var(--isl-fg);
+}
+/* where the island hangs: the window is pinned to that corner or edge, and the island sticks to it */
+.island-wrap[data-h="left"] { justify-content: flex-start; }
+.island-wrap[data-h="right"] { justify-content: flex-end; }
+.island-wrap[data-v="middle"] { align-items: center; }
+.island-wrap[data-v="bottom"] { align-items: flex-end; }
+
+.island {
+  box-sizing: border-box;
+  zoom: var(--isl-scale);
+  width: var(--isl-pill-w);
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  background: var(--isl-bg);
+  border: var(--isl-border-w) solid var(--isl-border-c);
+  border-radius: var(--isl-radius);
+  box-shadow: var(--isl-shadow);
+  overflow: hidden;
+  transition:
+    width var(--isl-anim) cubic-bezier(0.2, 0.8, 0.2, 1),
+    height var(--isl-anim) cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity var(--isl-anim) ease;
+}
+.island.open { width: var(--isl-panel-w); height: 256px; }
+/* hanging from the bottom: the panel opens upwards, above the pill */
+.island-wrap[data-v="bottom"] .island { flex-direction: column-reverse; }
+/* a closed pill that nothing is happening to can fade back */
+.island-wrap[data-idle="true"] .island { opacity: var(--isl-idle); }
+.island-wrap[data-unlocked="true"] .pill { cursor: move; }
+
+/* ---- the pill (always visible) ---- */
+.pill {
+  all: unset;
+  box-sizing: border-box;
+  flex: none;
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  cursor: pointer;
+  color: inherit;
+}
+.pill:focus-visible { outline: 2px solid var(--isl-accent); outline-offset: -3px; border-radius: var(--isl-radius); }
+.pill-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pill-time { font-weight: 600; font-variant-numeric: tabular-nums; }
+.pill-clock { margin: 0 auto; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; }
+.pill-art { width: 26px; height: 26px; border-radius: 7px; object-fit: cover; flex: none; }
+.pill-art-empty { display: grid; place-items: center; background: var(--surface); color: var(--isl-accent); }
+
+.ring { width: 22px; height: 22px; flex: none; }
+.ring-track { fill: none; stroke: var(--track); stroke-width: 3; }
+.ring-fill { fill: none; stroke: var(--isl-accent); stroke-width: 3; stroke-linecap: round; transition: stroke-dasharray 0.4s linear; }
+.island[data-phase="short"] .ring-fill,
+.island[data-phase="long"] .ring-fill { stroke: #59d98e; }
+
+.eq { display: flex; align-items: flex-end; gap: 2px; height: 14px; flex: none; }
+.eq i { width: 3px; height: 4px; border-radius: 2px; background: var(--isl-accent); }
+.island[data-playing="true"] .eq i { animation: eq 0.9s ease-in-out infinite; }
+.island[data-playing="true"] .eq i:nth-child(2) { animation-delay: 0.15s; }
+.island[data-playing="true"] .eq i:nth-child(3) { animation-delay: 0.3s; }
+.island[data-playing="true"] .eq i:nth-child(4) { animation-delay: 0.45s; }
+@keyframes eq { 0%, 100% { height: 3px; } 50% { height: 14px; } }
+
+/* ---- the panel ---- */
+.panel {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 14px 12px;
+}
+.panel-head { display: flex; align-items: center; justify-content: space-between; }
+.tabs { display: flex; gap: 4px; }
+.tabs button {
+  all: unset;
+  cursor: pointer;
+  padding: 4px 11px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+.tabs button.on { background: var(--surface); color: var(--isl-fg); }
+.tabs button:hover:not(.on) { color: var(--isl-fg); }
+.tabs button:focus-visible, .icon:focus-visible, .btn:focus-visible { outline: 2px solid var(--isl-accent); outline-offset: 1px; }
+
+.icon {
+  all: unset;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--isl-fg);
+}
+.icon:hover:not(:disabled) { background: var(--surface); }
+.icon:disabled { opacity: 0.35; cursor: default; }
+.icon.on { color: var(--isl-accent); }
+.icon.big { width: 38px; height: 38px; background: var(--isl-accent); color: var(--isl-on-accent); font-size: 16px; }
+.icon.big:hover:not(:disabled) { background: var(--isl-accent); filter: brightness(1.12); }
+
+.btn {
+  all: unset;
+  box-sizing: border-box;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--isl-fg);
+  cursor: pointer;
+}
+.btn:hover { background: var(--surface-hover); }
+.btn.primary { background: var(--isl-accent); color: var(--isl-on-accent); font-weight: 600; }
+.btn.primary:hover { filter: brightness(1.12); }
+
+.controls { display: flex; align-items: center; gap: 4px; margin-top: auto; }
+.spacer { flex: 1; }
+.empty { margin: 8px 0; color: var(--muted); }
+.muted { margin: 0; color: var(--dim); font-size: 12px; min-height: 1em; }
+
+.bar { height: 4px; border-radius: 2px; background: var(--track); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--isl-accent); transition: width 0.5s linear; }
+
+/* music */
+.music, .focus, .tools { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; }
+.tools { overflow-y: auto; }
+.music-top { display: flex; align-items: center; gap: 12px; }
+.art { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; flex: none; }
+.art-empty { display: grid; place-items: center; background: var(--surface); color: var(--isl-accent); font-size: 26px; }
+.meta { display: flex; flex-direction: column; min-width: 0; }
+.meta strong, .meta span, .meta small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.meta span { color: var(--muted); }
+.meta small { color: var(--dim); }
+.times { display: flex; justify-content: space-between; color: var(--dim); font-size: 11px; font-variant-numeric: tabular-nums; }
+
+/* focus */
+.focus-top { display: flex; align-items: baseline; justify-content: space-between; }
+.chip { padding: 2px 11px; border-radius: 999px; background: var(--surface); color: var(--muted); }
+.big-time { font-size: 34px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.task {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--track);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--isl-fg) 7%, transparent);
+  color: var(--isl-fg);
+  font: inherit;
+  user-select: text;
+  -webkit-user-select: text;
+}
+.task:focus { outline: 2px solid var(--isl-accent); outline-offset: 0; }
+.dots { display: flex; gap: 5px; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--track); }
+.dots i.on { background: var(--isl-accent); }
+
+/* tools */
+.meter { display: grid; grid-template-columns: 34px 1fr 40px; align-items: center; gap: 8px; }
+.meter span { color: var(--dim); }
+.meter code { text-align: right; font-family: inherit; }
+.label { margin: 6px 0 0; color: var(--dim); font-size: 12px; }
+.apps { display: flex; flex-wrap: wrap; gap: 6px; }
+.apps .btn { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .island, .ring-fill, .bar i { transition: none; }
+  .island[data-playing="true"] .eq i { animation: none; height: 8px; }
+}
+
+/* shown only if the island page crashes */
+.island.island-error { width: 300px; height: auto; min-height: 44px; padding: 10px 16px; color: #ffb4a8; font-size: 12px; user-select: text; -webkit-user-select: text; }

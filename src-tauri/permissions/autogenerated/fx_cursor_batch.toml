@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-fx-cursor-batch"
+description = "Enables the fx_cursor_batch command without any pre-configured scope."
+commands.allow = ["fx_cursor_batch"]
+
+[[permission]]
+identifier = "deny-fx-cursor-batch"
+description = "Denies the fx_cursor_batch command without any pre-configured scope."
+commands.deny = ["fx_cursor_batch"]

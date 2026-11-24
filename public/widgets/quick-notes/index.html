@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Quick notes</title>
+  <link rel="stylesheet" href="../../sdk/deskforge-widget.css">
+  <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+  <label for="note" class="muted" data-df-layout="note-label" data-df-layout-label="Notes label" data-df-layout-kind="text">Notes</label>
+  <textarea id="note" maxlength="8000" disabled placeholder="Jot something down" data-df-layout="note" data-df-layout-label="Notes field" data-df-layout-kind="interactive"></textarea>
+  <p id="status" class="muted" role="status" data-df-layout="status" data-df-layout-label="Save status" data-df-layout-kind="text"></p>
+  <script src="../../sdk/deskforge-sdk.js"></script>
+  <script src="widget.js"></script>
+</body>
+</html>

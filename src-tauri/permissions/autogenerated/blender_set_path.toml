@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-blender-set-path"
+description = "Enables the blender_set_path command without any pre-configured scope."
+commands.allow = ["blender_set_path"]
+
+[[permission]]
+identifier = "deny-blender-set-path"
+description = "Denies the blender_set_path command without any pre-configured scope."
+commands.deny = ["blender_set_path"]

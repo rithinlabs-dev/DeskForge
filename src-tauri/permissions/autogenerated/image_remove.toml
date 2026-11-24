@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-image-remove"
+description = "Enables the image_remove command without any pre-configured scope."
+commands.allow = ["image_remove"]
+
+[[permission]]
+identifier = "deny-image-remove"
+description = "Denies the image_remove command without any pre-configured scope."
+commands.deny = ["image_remove"]

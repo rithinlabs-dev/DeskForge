@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-desktop-glass-diagnostics"
+description = "Enables the desktop_glass_diagnostics command without any pre-configured scope."
+commands.allow = ["desktop_glass_diagnostics"]
+
+[[permission]]
+identifier = "deny-desktop-glass-diagnostics"
+description = "Denies the desktop_glass_diagnostics command without any pre-configured scope."
+commands.deny = ["desktop_glass_diagnostics"]

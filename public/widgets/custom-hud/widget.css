@@ -1,0 +1,9 @@
+.hud { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--space) * 0.6); height: 100%; }
+.part { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5em; }
+.part .label { color: var(--muted); }
+.clock .value { font-size: 3em; line-height: 1; font-weight: 300; letter-spacing: -0.03em; text-shadow: var(--glow); }
+.date .value { color: var(--muted); }
+.cpu .value, .memory .value { margin-left: auto; text-shadow: var(--glow); }
+.net .value { margin-left: auto; }
+.bar { flex-basis: 100%; height: 6px; overflow: hidden; background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.bar i { display: block; height: 100%; width: calc(var(--pct, 0) * 1%); background: var(--accent); box-shadow: var(--glow); }
